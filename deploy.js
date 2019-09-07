@@ -57,9 +57,12 @@ function stopRemoteServices() {
 
 // updates the project source on the server
 function updateRemoteApp() {
-	return ssh.execCommand('cp -r riot-express-todo-list/* riot-express-todo-list/ && rm -rf riot-express-todo-list', {
-		cwd: '/home/ubuntu'
-	});
+	return ssh.execCommand(
+		'cp -r riot-express-todo-list-temp/* riot-express-todo-list/ && rm -rf riot-express-todo-list-temp',
+		{
+			cwd: '/home/ubuntu'
+		}
+	);
 }
 
 // restart mongodb and node services on the remote server
@@ -76,7 +79,7 @@ function sshConnect() {
 	ssh
 		.connect({
 			// TODO: ADD YOUR IP ADDRESS BELOW (e.g. '12.34.5.67')
-			host: '100.26.208.194',
+			host: '54.89.129.51',
 			username: 'ubuntu',
 			privateKey: '../handson-one-key.pem'
 		})
